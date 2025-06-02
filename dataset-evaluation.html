@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PROMID 2024 - Dataset & Evaluation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="container-fluid content-wrapper-after-fixed-top">
+        <div class="row">
+            <div id="sidebar-placeholder"></div>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <!-- MAIN_CONTENT_FOR_PAGE will go here -->
+                <!-- For dataset-evaluation.html, PAGE_TITLE_IN_HEAD = Dataset & Evaluation -->
+                <!-- MAIN_CONTENT_FOR_PAGE: -->
+                <div class="page-header">
+                    <h1 class="h2">Dataset and Evaluation</h1>
+                </div>
+
+                <h3>Dataset</h3>
+                <p>The PROMID dataset will consist of pairs of (generated text, original prompt) and, for Subtask 1, sets of distractor prompts.</p>
+                <ul>
+                    <li><strong>Training Data:</strong> Will contain text-prompt pairs. Format: JSONL, where each line is a JSON object with "text" and "prompt" keys.
+                        <pre><code>{"text": "Generated misinformation text...", "prompt": "Original prompt used..."}</code></pre>
+                    </li>
+                    <li><strong>Development Data:</strong> Similar to training data, for model tuning.</li>
+                    <li><strong>Test Data:</strong>
+                        <ul>
+                            <li>For Subtask 1: Each instance will have a "text" and a list of "candidate_prompts" (one of which is the true prompt).
+                                <pre><code>{"id": "text_001", "text": "Target text...", "candidate_prompts": ["prompt_A", "true_prompt_X", "prompt_C", ...]}</code></pre>
+                            </li>
+                            <li>For Subtask 2: Each instance will have a "text".
+                                <pre><code>{"id": "text_002", "text": "Target text..."}</code></pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>The dataset will be generated using a variety of open and possibly closed LLMs, with prompts designed to elicit potentially misleading or biased information on various topics.</p>
+                <p><strong>Download Links:</strong> (Links will be provided here upon release)</p>
+                <ul>
+                    <li>Training Set: [Link TBD - To be released on Important Dates]</li>
+                    <li>Development Set: [Link TBD - To be released on Important Dates]</li>
+                    <li>Test Set: [Link TBD - To be released after registration deadline]</li>
+                    <li>Scorer & Baselines: [Link to GitHub repo TBD]</li>
+                </ul>
+
+                <h3>Evaluation Metrics</h3>
+                <h4>Subtask 1: Prompt Similarity Ranking</h4>
+                <p>The primary metric will be <strong>Mean Reciprocal Rank (MRR)</strong>. Other metrics like Precision@k (P@1, P@3) might also be reported.</p>
+
+                <h4>Subtask 2: Prompt Generation</h4>
+                <p>Evaluation will be based on:</p>
+                <ul>
+                    <li><strong>Automatic Metrics:</strong> BLEU, ROUGE, METEOR, BERTScore against the ground-truth prompt.</li>
+                    <li><strong>Human Evaluation (Potentially):</strong> For a subset of submissions, human evaluators might assess fluency, relevance, and plausibility of the generated prompts.</li>
+                </ul>
+
+                <h3>Submission Format</h3>
+                <p>Participants will submit their results in a specific JSONL or TSV format. Detailed instructions for submission will be provided with the test data release on the [CodaLab/EvalAI/other platform] competition page.</p>
+                <h4>Subtask 1:</h4>
+                <p>A file where each line contains the text ID and the ranked list of candidate prompt IDs (or the prompts themselves if IDs are not provided with candidates).</p>
+                <pre><code>text_001    true_prompt_X   prompt_A    prompt_C ...</code></pre>
+
+                <h4>Subtask 2:</h4>
+                <p>A file where each line contains the text ID and the generated prompt.</p>
+                <pre><code>{"id": "text_002", "generated_prompt": "The generated prompt by the system..."}</code></pre>
+            </main>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
