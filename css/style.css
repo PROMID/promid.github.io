@@ -2,9 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 :root {
-    --primary-color: #007bff;
-    /* Bootstrap blue, easily customizable */
-    --primary-hover-color: #0056b3;
+    --primary-color: #6f42c1;          /* A Bootstrap-style purple */
+    --primary-hover-color: #5936a7;    /* A deeper purple for hover */
     --secondary-color: #6c757d;
     --light-bg: #f8f9fa;
     --lighter-bg: #ffffff;
